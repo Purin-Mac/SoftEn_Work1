@@ -6,4 +6,11 @@ class Time
         Time.new(self.year, 1, 1, 0, 0, 0)
     end
 end
-puts Time.now.at_beginning_of_year
+
+class Integer
+    def day
+        self * 60 * 60 * 24
+    end
+end
+
+puts Time.now.at_beginning_of_year + 1.day
