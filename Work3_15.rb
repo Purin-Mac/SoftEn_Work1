@@ -1,9 +1,8 @@
 require 'time'
 class Time
     def humanize
-        in_words = {12=>"twelve", 11 => "eleven", 10 => "ten", 9 => "nine",
-        8 => "eight", 7 => "seven", 6 => "six", 5 => "five", 4 => "four",
-        3 => "three", 2 => "two", 1 => "one", 0 => 12} 
+        hour_humanize = {12=>"twelve", 11 => "eleven", 10 => "ten", 9 => "nine", 8 => "eight", 
+	7 => "seven", 6 => "six", 5 => "five", 4 => "four", 3 => "three", 2 => "two", 1 => "one", 0 => "zero" } 
 	#hash to collect hour to humanize 
 
         hour = self.hour > 12 ? self.hour-12 : self.hour  #calculate hours
@@ -18,13 +17,13 @@ class Time
 	if self.hour == 23  #if near midnight 
 	   "About midnight"
 	elsif self.hour == 0 #if just pass midnight
-	   "About #{hour+12}:#{around_time}"
-	elsif quarter == 3  #if quarter 3 means most hit next hour 
 	   around_time = self.min/15.0.to_f 
 	   around_time = around_time.round()*15
-	   "About #{quarter_humanize_array[quarter]} #{in_words[hour+1]}" # quarter + hours+1 call 
+	   "About #{hour+12}:#{around_time}"
+	elsif quarter == 3  #if quarter 3 means most hit next hour 
+	   "About #{quarter_humanize_array[quarter]} #{hour_humanize[hour+1]}" # quarter + hours+1 call 
 	else 
-	   "About #{quarter_humanize_array[quarter]} #{in_words[hour]}" # quarter + hours call  if not close to next hours 
+	   "About #{quarter_humanize_array[quarter]} #{hour_humanize[hour]}" # quarter + hours call  if not close to next hours 
 	end
 
 
