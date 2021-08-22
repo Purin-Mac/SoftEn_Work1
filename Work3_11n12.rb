@@ -42,7 +42,7 @@ class BinaryTree
 
     def inorderTraversal (node)
         inOrderArray =[]
-        if root
+        if node
             inOrderArray = self.inorderTraversal(node.left)
             inOrderArray.push(node.value)
             inOrderArray = inOrderArray + self.inorderTraversal(node.right)
@@ -66,7 +66,7 @@ binary_tree << 5
 binary_tree << 3
 binary_tree << 6
 binary_tree << 8
-binary_tree { |x| puts x }
+binary_tree.each { |x| puts x }
 puts binary_tree.any? {|x| x==1}
 puts binary_tree.all? {|x| x==1}
 puts binary_tree.include?(1)
