@@ -1,14 +1,14 @@
-def Foo(arg, count = 0)
-    if count == 0
+def method(arg, count = 0)
+    if count == 0 # First time we use "".class"
         puts arg.class
-        Foo(arg.class, 1)
-    elsif count > 0 and count < 4
+        method(arg.class, 1)
+    elsif count > 0 and count < 4 # Secound time we use ".supperclass"
         count += 1
         puts arg.superclass
-        Foo(arg.superclass, count)
-    elsif count == 4
+        method(arg.superclass, count) # recursive function
+    elsif arg == " " # If it runs out of function ".supperclass"
         puts " "
     end
-
 end
-Foo(5)
+
+method(5)
