@@ -19,16 +19,18 @@ class Class
 			
 		    end
 
-		    def history(attr)
-		        @attr_history[attr.to_s]   #if call history return attribute wanted history -> h
-		    end
+		    
 		}
 	end
+	self.class_eval %Q{
+		def history(attr)
+		        @attr_history[attr.to_s]   #if call history return attribute wanted history -> h
+		end}
     end
 end
 
 class Foo
-    attr_accessor_with_history :bar, :gay
+    attr_accessor_with_history :bar, :loo
 end
 
 
@@ -36,8 +38,9 @@ f = Foo.new     # => #<Foo:0x127e678>
 f.bar = 3       # => 3
 f.bar = :wowzo  # => :wowzo
 f.bar = 'boo!'  # => 'boo!'
-f.gay = 6 
-puts "first"
-puts f.history(:bar).class # => [3, :wowzo, 'boo!']
-puts "second"
-puts f.history (:gay) 
+f.loo = 6 
+
+print f.history(:bar) # => [3, :wowzo, 'boo!']
+puts ""
+print f.history (:loo) 
+puts ""
