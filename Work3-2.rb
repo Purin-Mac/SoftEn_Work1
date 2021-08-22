@@ -6,8 +6,6 @@ def method(arg, count = 0)
         count += 1
         puts arg.superclass
         method(arg.superclass, count) # recursive function
-    elsif arg == " " # If it runs out of function ".supperclass"
-        puts " "
     end
 end
 
