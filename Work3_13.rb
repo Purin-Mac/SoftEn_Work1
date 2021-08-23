@@ -1,7 +1,7 @@
 class Numeric 
   @@currencies = {'yen' => 0.012, 'euro'=> 1.3, 'dollar' => 1.0 }  #hash of currency values 
   def method_missing(method_id, *args, &block)  #missing method overide 
-    
+    currency = method_id.to_s.gsub( /s$/, '')  #substacne string with s character 
     if @@currencies.has_key?(currency)  #check if contain that currency 
       self*@@currencies[currency]  #return result by currrency ratio 
     else 
@@ -9,7 +9,7 @@ class Numeric
     end
   end
   def in(args)
-    currency = method_id.to_s.gsub( /s$/, '')  #substacne string with s character 
+    currency = args.to_s.gsub( /s$/, '')  #substacne string with s character 
     self.*@@currencies[currency] #return result by currency ratio 
   end 
 end 
